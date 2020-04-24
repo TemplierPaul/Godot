@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.87451, 0.0352941, 0.0352941, 1 )
+
+[node name="Panel" type="Panel"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 16.0
+text = "Burn"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Duration" type="Label" parent="."]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 40.0
+margin_bottom = 40.0
+text = "2"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Damage" type="Label" parent="."]
+margin_top = 24.0
+margin_right = 16.0
+margin_bottom = 40.0
+text = "2"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

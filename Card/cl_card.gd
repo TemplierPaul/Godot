@@ -18,3 +18,4 @@ func _init(n='Card', c=0):
 
 func effect(caster, target):
 	print("Doing stuff on ", target.name)
+	return true

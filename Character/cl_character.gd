@@ -23,6 +23,10 @@ func _init(n, _hp, _mana):
 	self.frame = Frame.instance()
 	self.frame.character = self
 	self.frame.update()
+	
+func start_turn():
+	self.mana = self.mana_max
+	self.frame.update()
 
 func add_hp(value):
 	self.hp = self.hp + value

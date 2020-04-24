@@ -1,11 +1,34 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://test.gd" type="Script" id=1]
+[ext_resource path="res://Card/card.tscn" type="PackedScene" id=2]
 
 [node name="test" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 3.34039
+margin_right = 3.34033
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Card2" parent="." instance=ExtResource( 2 )]
+margin_left = 92.6596
+margin_top = 176.0
+margin_right = 244.66
+margin_bottom = 392.0
+
+[node name="Cont" type="CenterContainer" parent="."]
+margin_left = 372.66
+margin_top = 176.0
+margin_right = 585.66
+margin_bottom = 392.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Card" parent="Cont" instance=ExtResource( 2 )]
+margin_left = 30.0
+margin_right = 182.0

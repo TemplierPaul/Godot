@@ -42,9 +42,4 @@ func update():
 func _on_click(event):
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == 1:
-			highlighted = !highlighted
-			if highlighted:
-				highlight()
-			else:
-				downlight()
 			emit_signal("clicked")

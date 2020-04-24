@@ -17,3 +17,4 @@ func _init(n='Card', c=0, _dmg=0):
 func effect(caster, target):
 	print("Attacking ", target.name)
 	target.remove_hp(self.dmg)
+	return true

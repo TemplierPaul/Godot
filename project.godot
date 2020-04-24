@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "Character",
 "language": "GDScript",
 "path": "res://Character/cl_character.gd"
+}, {
+"base": "Reference",
+"class": "Effect",
+"language": "GDScript",
+"path": "res://Effect/cl_effect.gd"
 } ]
 _global_script_class_icons={
 "Attack_card": "",
 "Card": "",
-"Character": ""
+"Character": "",
+"Effect": ""
 }
 
 [application]

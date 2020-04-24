@@ -17,8 +17,8 @@ bg_color = Color( 0, 0.0313726, 0.819608, 1 )
 
 [node name="Character" type="Control"]
 margin_right = 112.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 112, 120 )
+margin_bottom = 169.0
+rect_min_size = Vector2( 112, 169 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource( 1 )
@@ -110,6 +110,16 @@ custom_fonts/font = ExtResource( 2 )
 text = "100"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = -24.0
+margin_top = 124.0
+margin_right = 136.0
+margin_bottom = 164.0
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

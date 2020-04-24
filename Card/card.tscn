@@ -7,12 +7,13 @@
 margin_right = 152.0
 margin_bottom = 216.0
 rect_min_size = Vector2( 152, 216 )
+rect_pivot_offset = Vector2( 76, 108 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Background" type="Panel" parent="."]
 margin_top = 16.0
 margin_right = 144.0
 margin_bottom = 216.0
@@ -72,5 +73,9 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="gui_input" from="Panel" to="." method="_on_click"]
+[connection signal="gui_input" from="Background" to="." method="_on_click"]
+[connection signal="mouse_entered" from="Background" to="." method="mouse_hover"]
+[connection signal="mouse_exited" from="Background" to="." method="hover_stop"]
 [connection signal="gui_input" from="Cost background" to="." method="_on_click"]
+[connection signal="mouse_entered" from="Cost background" to="." method="mouse_hover"]
+[connection signal="mouse_exited" from="Cost background" to="." method="hover_stop"]
