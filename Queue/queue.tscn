@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Queue/fr_queue.gd" type="Script" id=1]
+[ext_resource path="res://Roboto/Roboto-Black.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0.0313726, 0.819608, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id=2]
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="DynamicFont" id=3]
+size = 13
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 25
+font_data = ExtResource( 2 )
+
+[node name="Queue" type="Control"]
+anchor_right = 0.42
+anchor_bottom = 0.1
+margin_right = 170.0
+margin_bottom = 16.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -630.0
+margin_bottom = 60.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Players" type="HBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mana" type="ProgressBar" parent="."]
+anchor_left = 0.57
+anchor_top = 0.5
+anchor_right = 0.57
+anchor_bottom = 0.5
+margin_left = -211.0
+margin_top = 16.0
+margin_right = 269.0
+margin_bottom = 40.0
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+value = 50.0
+percent_visible = false
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="Mana"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -1.0
+custom_fonts/font = SubResource( 3 )
+text = "2/4"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Turn" type="Label" parent="."]
+margin_right = 168.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 4 )
+text = "Turn 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,6 +1,7 @@
 extends Node
 
 signal clicked
+signal updated
 
 # Called when the node enters the scene tree for the first time.
 var character
@@ -37,6 +38,7 @@ func update():
 	get_node("Bars/Mana_bar/Mana").text = str(self.character.mana) + '/' + str(self.character.mana_max)
 	get_node("Bars/Mana_bar").value = 100 * self.character.mana / self.character.mana_max
 	get_node("Name").text = str(self.character.name)
+	emit_signal('updated')
 
 
 func _on_click(event):

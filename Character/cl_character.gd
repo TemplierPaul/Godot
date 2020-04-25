@@ -7,6 +7,7 @@ var mana
 var mana_max
 var speed
 var frame
+var alive = true
 
 var Frame =  load("res://Character/character.tscn") 
 
@@ -26,7 +27,13 @@ func _init(n, _hp, _mana):
 	
 func start_turn():
 	self.mana = self.mana_max
+	self.frame.highlight()
 	self.frame.update()
+
+func end_turn():
+	self.frame.downlight()
+	self.frame.update()
+	
 
 func add_hp(value):
 	self.hp = self.hp + value
@@ -36,5 +43,14 @@ func remove_hp(value):
 	self.hp = self.hp - value
 	self.frame.update()
 	if self.hp <= 0:
+		self.alive=false
 		self.hp = 0
 		emit_signal("death")
+
+func get_cards():
+	var cards = []
+	for i in range(5):
+		var c = Attack_card.new("Card "+str(i), 1, 20)
+		cards.append(c)
+		
+	return cards

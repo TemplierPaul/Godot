@@ -50,7 +50,7 @@ func unselect():
 
 
 func mouse_hover():
-	print("Hovering")
+	#print("Hovering")
 	emit_signal("focused")
 	
 func hover_stop():
