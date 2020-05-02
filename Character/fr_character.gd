@@ -14,6 +14,11 @@ var highlighted = false
 func _ready():
 	set_styles()
 	downlight()
+	
+func set_sprite(path, flip_h, scale):
+	$Sprite.texture = load(path)
+	$Sprite.set('flip_h', flip_h)
+	$Sprite.scale=Vector2(scale, scale)
 
 func set_styles():
 	base_style.set_bg_color(Color(0, 0, 0, 1))
@@ -35,8 +40,12 @@ func downlight():
 func update():
 	get_node("Bars/HP_bar/HP").text = str(self.character.hp) + '/' + str(self.character.hp_max)
 	get_node("Bars/HP_bar").value = 100 * self.character.hp / self.character.hp_max 
-	get_node("Bars/Mana_bar/Mana").text = str(self.character.mana) + '/' + str(self.character.mana_max)
-	get_node("Bars/Mana_bar").value = 100 * self.character.mana / self.character.mana_max
+	
+	if self.character.mana_max > 0:
+		get_node("Bars/Mana_bar/Mana").text = str(self.character.mana) + '/' + str(self.character.mana_max)
+		get_node("Bars/Mana_bar").value = 100 * self.character.mana / self.character.mana_max
+	else:
+		$Bars/Mana_bar.visible=false
 	get_node("Name").text = str(self.character.name)
 	emit_signal('updated')
 

@@ -1,6 +1,7 @@
 extends Control
 
 var Character = load("res://Character/cl_character.gd") 
+var Porcupine = load("res://Character/Monsters/cl_porcupine.gd") 
 var Card = load("res://Card/cl_card.gd") 
 var Attack_card = load("res://Card/cl_attack_card.gd") 
 
@@ -19,9 +20,8 @@ var turn_char
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var i 
 	for i in range(3):
-		var ch = Character.new("Player "+str(i), 100, 4)
+		var ch = Robot.new("Player "+str(i), 100, 4)
 		var new_node = ch.frame
 		get_node("Team").add_child(new_node)
 		new_node.update()
@@ -30,7 +30,7 @@ func _ready():
 		team.append(ch)
 	
 	for i in range(3):
-		var ch = Character.new("Monster "+str(i), 40, 2)
+		var ch = Porcupine.new("Monster "+str(i), 40, 0)
 		var new_node = ch.frame
 		get_node("Enemies").add_child(new_node)
 		new_node.update()
@@ -133,4 +133,3 @@ func next_turn(prev_freed=false):
 	add_cards(turn_char.get_cards())
 	turn_char.start_turn()
 	
-

@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Roboto/Roboto-Black.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://UI.gd" type="Script" id=2]
-[ext_resource path="res://UI_center.gd" type="Script" id=3]
-[ext_resource path="res://End turn.gd" type="Script" id=4]
+[ext_resource path="res://GUI/UI.gd" type="Script" id=2]
+[ext_resource path="res://GUI/UI_center.gd" type="Script" id=3]
+[ext_resource path="res://GUI/End turn.gd" type="Script" id=4]
 [ext_resource path="res://Queue/queue.tscn" type="PackedScene" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]

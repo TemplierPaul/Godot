@@ -49,7 +49,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 56, 32 )
+position = Vector2( 56, 31 )
 texture = ExtResource( 3 )
 
 [node name="Bars" type="VBoxContainer" parent="."]

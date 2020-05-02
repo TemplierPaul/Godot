@@ -1,35 +1,24 @@
-class_name Card
+extends Card
 
-var cost
-var name
-var description
+class_name Attack_card
 
-var frame
-var base_style
-var highlight_style 
- 
-var deck
+var dmg
+#ba0000
 
-var Frame =  load("res://Card/card.tscn") 
-
-func _init(n='Card', c=0):
+func _init(n='Card', c=0, _dmg=0):
 	self.name = n
 	self.cost = c
-	self.description = "This is a card, which does card stuff like being a card" 
+	self.dmg = _dmg
+	self.description = "Deals " + str(self.dmg) + ' DMG'
 	
 	set_frame()
-	
-func set_frame():
-	custom_style()
-	self.frame = Frame.instance()
-	self.frame.link_card(self)
 
 func custom_style():
 	base_style = StyleBoxFlat.new()
 	base_style.set_bg_color(Color(0, 0, 0, 1))
 	base_style.set_border_width_all(2)
 	base_style.set("border_blend", false)
-	base_style.set("border_color", Color(1, 1, 1, 1))
+	base_style.set("border_color", Color("#ba0000"))
 	
 	highlight_style = StyleBoxFlat.new()
 	highlight_style.set_bg_color(Color(0.364706, 0.364706, 0.364706))
@@ -38,5 +27,6 @@ func custom_style():
 	highlight_style.set("border_color", Color(0, 0, 0, 1))
 
 func effect(caster, target):
-	print("Doing stuff on ", target.name)
+	print("Attacking ", target.name)
+	target.remove_hp(self.dmg)
 	return true

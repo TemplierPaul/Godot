@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Card",
 "class": "Attack_card",
 "language": "GDScript",
-"path": "res://Card/cl_attack_card.gd"
+"path": "res://Card/Card types/cl_attack_card.gd"
 }, {
 "base": "Reference",
 "class": "Card",
@@ -20,26 +20,68 @@ _global_script_classes=[ {
 "path": "res://Card/cl_card.gd"
 }, {
 "base": "Reference",
+"class": "Card_Dict",
+"language": "GDScript",
+"path": "res://Card/card_dict.gd"
+}, {
+"base": "Reference",
 "class": "Character",
 "language": "GDScript",
 "path": "res://Character/cl_character.gd"
 }, {
 "base": "Reference",
+"class": "Deck",
+"language": "GDScript",
+"path": "res://Deck/cl_deck.gd"
+}, {
+"base": "Reference",
 "class": "Effect",
 "language": "GDScript",
 "path": "res://Effect/cl_effect.gd"
+}, {
+"base": "Card",
+"class": "Heal_card",
+"language": "GDScript",
+"path": "res://Card/Card types/cl_heal_card.gd"
+}, {
+"base": "Reference",
+"class": "Interaction",
+"language": "GDScript",
+"path": "res://Interaction/cl_interaction.gd"
+}, {
+"base": "Interaction",
+"class": "Monster_AI",
+"language": "GDScript",
+"path": "res://Interaction/cl_AI.gd"
+}, {
+"base": "Character",
+"class": "Porcupine",
+"language": "GDScript",
+"path": "res://Character/Monsters/cl_porcupine.gd"
+}, {
+"base": "Character",
+"class": "Robot",
+"language": "GDScript",
+"path": "res://Character/Players/cl_robot.gd"
 } ]
 _global_script_class_icons={
 "Attack_card": "",
 "Card": "",
+"Card_Dict": "",
 "Character": "",
-"Effect": ""
+"Deck": "",
+"Effect": "",
+"Heal_card": "",
+"Interaction": "",
+"Monster_AI": "",
+"Porcupine": "",
+"Robot": ""
 }
 
 [application]
 
 config/name="Raccoons"
-run/main_scene="res://UI.tscn"
+run/main_scene="res://GUI/UI.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -49,7 +91,3 @@ window/size/height=800
 window/size/fullscreen=true
 window/handheld/orientation="sensor_landscape"
 window/stretch/mode="2d"
-
-[rendering]
-
-environment/default_environment="res://default_env.tres"

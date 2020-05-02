@@ -63,12 +63,11 @@ __meta__ = {
 
 [node name="Description" type="Label" parent="."]
 margin_left = 16.0
-margin_top = 128.0
+margin_top = 136.0
 margin_right = 128.0
 margin_bottom = 200.0
 text = "Description"
 align = 1
-valign = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
