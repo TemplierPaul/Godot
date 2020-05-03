@@ -18,6 +18,7 @@ var selected_card=null
 var queue
 var turn_char
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for i in range(3):
@@ -30,7 +31,7 @@ func _ready():
 		team.append(ch)
 	
 	for i in range(3):
-		var ch = Porcupine.new("Monster "+str(i), 40, 0)
+		var ch = Porcupine.new("Monster "+str(i), 40, 2)
 		var new_node = ch.frame
 		get_node("Enemies").add_child(new_node)
 		new_node.update()
@@ -41,9 +42,10 @@ func _ready():
 	queue = $Queue
 	queue.init(team, enemies)
 	print(queue.index)
-	turn_char = queue.get_next()
-	turn_char.start_turn()
-	add_cards(turn_char.get_cards())
+	next_turn(true)
+#	turn_char = queue.get_next()
+#	turn_char.start_turn()
+#	add_cards(turn_char.get_cards())
 
 func add_cards(cards):
 	for c in cards:
@@ -55,15 +57,23 @@ func add_cards(cards):
 		get_node("Cards").add_child(new_node)
 		
 
-func cast_card(card, source, target):
-	if card.card.cost <= turn_char.mana:
-		turn_char.mana = turn_char.mana - card.card.cost
+func cast_card(card, source, target, show_time=0):
+	print('Casting card ', card.name, " from ", source.name, ' on ', target.name)
+	if card.cost <= turn_char.mana:
+		turn_char.mana = turn_char.mana - card.cost
 		turn_char.frame.update()
-		card.card.effect(source, target)
+		
+		if show_time >0:
+			card.frame.emit_signal('focused')
+			yield(get_tree().create_timer(show_time), "timeout")
+			card.frame.emit_signal('unfocused')
+		
+		card.effect(source, target)
 		if selected_card != null:
 			selected_card.free()
 		update_lists()
 	selected_card = null
+	print("Casting completed")
 	
 func are_all_dead(list):
 	var alive = 0
@@ -107,7 +117,7 @@ func end_game(result):
 func char_click(char_frame):
 	#print(char_frame.character.name, ' clicked')
 	if selected_card != null:
-		cast_card(selected_card, null, char_frame.character)
+		cast_card(selected_card.card, turn_char, char_frame.character)
 		
 
 func card_click(card_frame):
@@ -130,6 +140,15 @@ func next_turn(prev_freed=false):
 	for c in $Cards.get_children():
 		c.free()
 	turn_char = queue.get_next()
+	print(turn_char.name, " AI: ", turn_char.AI)
+	if turn_char.AI ==null:
+		$Cards.visible = true
+		$"End turn".visible = true
+	else:
+		$Cards.visible = false
+		$"End turn".visible = false
+		turn_char.AI.connect('next_turn', self, "next_turn")
 	add_cards(turn_char.get_cards())
-	turn_char.start_turn()
+	yield(turn_char.start_turn(self), "completed")
+
 	

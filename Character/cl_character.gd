@@ -11,12 +11,19 @@ var alive = true
 var deck
 var AI
 
+var hand = []
+
 var Frame = load("res://Character/character.tscn") 
 var Deck = load("res://Deck/cl_deck.gd") 
 
 signal death
+signal completed
 
-func _init(n="Character", _hp=1, _mana=1):
+func _init(n="Character", _hp=1, _mana=1, ai=false):
+	if ai:
+		self.AI = Monster_AI.new(self)
+	else:
+		self.AI = null
 	self.name = n
 	self.hp = _hp
 	self.hp_max = _hp
@@ -33,10 +40,13 @@ func _init(n="Character", _hp=1, _mana=1):
 func set_sprite():
 	self.frame.set_sprite("res://Icon.png", true, 1)
 	
-func start_turn():
+func start_turn(ui=null):
 	self.mana = self.mana_max
 	self.frame.highlight()
 	self.frame.update()
+	if self.AI != null:
+		self.AI.act(ui)
+	return self
 
 func end_turn():
 	self.frame.downlight()
@@ -55,4 +65,5 @@ func remove_hp(value):
 		emit_signal("death")
 
 func get_cards():
-	return self.deck.get_hand(5)
+	hand = self.deck.get_hand(5)
+	return hand

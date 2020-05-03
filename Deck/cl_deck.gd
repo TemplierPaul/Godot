@@ -34,4 +34,5 @@ func get_hand(n=5):
 			indices.append(i)
 	for i in indices:
 		hand.append(cards[i])
+		cards[i].set_frame()
 	return hand
