@@ -68,8 +68,8 @@ func cast_card(card, source, target, show_time=0):
 			card.frame.emit_signal('unfocused')
 		
 		card.effect(source, target)
-		if selected_card != null:
-			selected_card.free()
+		if card.frame != null:
+			card.frame.free()
 		update_lists()
 	selected_card = null
 	print("Casting completed")

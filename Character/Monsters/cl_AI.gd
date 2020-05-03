@@ -21,6 +21,9 @@ func act(_ui):
 	yield(cast_random_card(), 'completed')
 	yield(character.frame.get_tree().create_timer(wait_time), "timeout")
 	
+	if ! ui.keep_going:
+		return self
+	
 	yield(cast_random_card(), 'completed')
 	yield(character.frame.get_tree().create_timer(wait_time), "timeout")
 	
@@ -32,11 +35,14 @@ func cast_random_card():
 		return self
 		
 	var i = rng.randi_range(0, len(cards)-1)
-	print(cards)
 	
-	var targets = character.enemies.get_random(1)
+	var target
+	if cards[i].name == "Grass Break":
+		target = self.character
+	else:
+		target = character.enemies.get_random(1) [0]
 	
-	yield(cast(cards[i], targets[0]), 'completed')
+	yield(cast(cards[i], target), 'completed')
 	
 	return self
 
@@ -45,6 +51,10 @@ func cast(card, target):
 		print("Casting")
 		yield(ui.cast_card(card, self.character, target, 1), 'completed')
 		print("Casted")	
+	cards = []
+	for c in ui.get_node('Cards').get_children():
+		cards.append(c.card)
+	print(cards)
 
 func end():
 	emit_signal("next_turn")

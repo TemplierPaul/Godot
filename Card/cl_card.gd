@@ -22,7 +22,7 @@ func _init(n='Card', c=0):
 	set_frame()
 	
 func set_frame():
-	print(sprite_carac)
+#	print(sprite_carac)
 	custom_style()
 	self.frame = Frame.instance()
 	self.frame.link_card(self)

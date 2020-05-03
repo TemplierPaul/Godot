@@ -13,6 +13,8 @@ var AI
 var team
 var enemies
 
+var rng = RandomNumberGenerator.new()
+
 var hand = []
 
 var Frame = load("res://Character/character.tscn") 
@@ -21,6 +23,7 @@ signal death
 signal completed
 
 func _init(n="Character", _hp=1, _mana=1, ai=false):
+	rng.randomize()
 	if ai:
 		self.AI = Monster_AI.new(self)
 	else:
@@ -30,7 +33,7 @@ func _init(n="Character", _hp=1, _mana=1, ai=false):
 	self.hp_max = _hp
 	self.mana = _mana
 	self.mana_max = _mana
-	self.speed = 0
+	self.speed = rng.randi_range(0, 10)
 	self.deck = Deck.new(self)
 	
 	self.frame = Frame.instance()
@@ -67,11 +70,13 @@ func end_turn():
 	
 func add_hp(value):
 	self.hp = min(self.hp + value, self.hp_max)
+	print(self.name, ' gained HP')
 	self.frame.update()
 	return self
 	
 func remove_hp(value):
 	self.hp = self.hp - value
+	print(self.name, ' lost HP')
 	self.frame.update()
 	if self.hp <= 0:
 		self.alive=false

@@ -30,9 +30,9 @@ func populate(type='robots'):
 	var names = ["Bob", "Dan", "Martin"]
 	for i in range(3):
 		if type == 'robots':
-			ch = Robot.new(names[i], 100, 4)
+			ch = Robot.new(names[i])
 		elif type == 'porcupines':
-			ch = Porcupine.new("Monster "+str(i), 40, 2)
+			ch = Porcupine.new()
 		else:
 			ch = Character.new("Char "+str(i), 40, 2)
 		add_char(ch)
