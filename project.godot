@@ -20,11 +20,6 @@ _global_script_classes=[ {
 "path": "res://Card/cl_card.gd"
 }, {
 "base": "Reference",
-"class": "Card_Dict",
-"language": "GDScript",
-"path": "res://Card/card_dict.gd"
-}, {
-"base": "Reference",
 "class": "Character",
 "language": "GDScript",
 "path": "res://Character/cl_character.gd"
@@ -32,12 +27,17 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Deck",
 "language": "GDScript",
-"path": "res://Deck/cl_deck.gd"
+"path": "res://Card/cl_deck.gd"
 }, {
 "base": "Reference",
 "class": "Effect",
 "language": "GDScript",
 "path": "res://Effect/cl_effect.gd"
+}, {
+"base": "Control",
+"class": "Formation",
+"language": "GDScript",
+"path": "res://Formation/fr_formation.gd"
 }, {
 "base": "Card",
 "class": "Heal_card",
@@ -47,7 +47,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Monster_AI",
 "language": "GDScript",
-"path": "res://Interaction/cl_AI.gd"
+"path": "res://Character/Monsters/cl_AI.gd"
 }, {
 "base": "Character",
 "class": "Porcupine",
@@ -62,10 +62,10 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Attack_card": "",
 "Card": "",
-"Card_Dict": "",
 "Character": "",
 "Deck": "",
 "Effect": "",
+"Formation": "",
 "Heal_card": "",
 "Monster_AI": "",
 "Porcupine": "",

@@ -5,6 +5,7 @@ signal updated
 
 # Called when the node enters the scene tree for the first time.
 var character
+var arrow
 
 var base_style = StyleBoxFlat.new()
 var highlight_style = StyleBoxFlat.new()
@@ -54,3 +55,7 @@ func _on_click(event):
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == 1:
 			emit_signal("clicked")
+			
+			
+func show_arrow(show=true):
+	arrow.set('visible', show)

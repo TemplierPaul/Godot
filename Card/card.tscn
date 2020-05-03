@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Card/fr_card.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Roboto/Roboto-Black.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 21
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 15
+font_data = ExtResource( 3 )
 
 [node name="Card" type="Control"]
 margin_right = 152.0
@@ -34,6 +43,7 @@ __meta__ = {
 [node name="Cost" type="Label" parent="Cost background"]
 margin_right = 32.0
 margin_bottom = 32.0
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "0"
@@ -45,7 +55,6 @@ __meta__ = {
 
 [node name="Image" type="Sprite" parent="."]
 position = Vector2( 72, 88 )
-scale = Vector2( 1.625, 1 )
 texture = ExtResource( 2 )
 
 [node name="Name" type="Label" parent="."]
@@ -53,6 +62,7 @@ margin_left = 16.0
 margin_top = 24.0
 margin_right = 128.0
 margin_bottom = 48.0
+custom_fonts/font = SubResource( 2 )
 text = "Name"
 align = 1
 valign = 1

@@ -30,7 +30,7 @@ func get_next():
 	var new = chars[index]
 	if new.alive:
 		print("New Turn: ", new.name)
-		if current != null:
+		if current != null and current.alive:
 			current.frame.disconnect("updated", self, "update_bar")
 		new.frame.connect("updated", self, "update_bar")
 		current = new
@@ -53,3 +53,5 @@ func update_bar():
 		$Mana.value = 0
 		$Mana/Value.text = "No mana"
 		
+func end_game():
+	chars=[]

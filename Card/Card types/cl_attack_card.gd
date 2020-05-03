@@ -28,5 +28,5 @@ func custom_style():
 
 func effect(caster, target):
 	print("Attacking ", target.name)
-	target.remove_hp(self.dmg)
+	yield(target.remove_hp(self.dmg), "completed")
 	return true

@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Roboto/Roboto-Black.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://GUI/UI.gd" type="Script" id=2]
 [ext_resource path="res://GUI/UI_center.gd" type="Script" id=3]
 [ext_resource path="res://GUI/End turn.gd" type="Script" id=4]
 [ext_resource path="res://Queue/queue.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GUI/grasslands.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -36,29 +37,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Team" type="VBoxContainer" parent="."]
-margin_left = 136.0
-margin_top = 168.0
-margin_right = 264.0
-margin_bottom = 616.0
-alignment = 1
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Enemies" type="VBoxContainer" parent="."]
-margin_left = 1256.0
-margin_top = 168.0
-margin_right = 1384.0
-margin_bottom = 616.0
-alignment = 1
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="Sprite" type="Sprite" parent="Panel"]
+position = Vector2( 744, 440 )
+scale = Vector2( 0.85, 0.85 )
+texture = ExtResource( 6 )
 
 [node name="Close game" type="Button" parent="."]
 margin_left = 24.0
@@ -69,6 +51,7 @@ custom_styles/hover = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
 text = "CLOSE"
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -100,6 +83,7 @@ rect_scale = Vector2( 1, 1.5 )
 rect_pivot_offset = Vector2( 100, 120 )
 script = ExtResource( 3 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -113,6 +97,7 @@ margin_bottom = 84.0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true,
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 

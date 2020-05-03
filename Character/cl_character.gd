@@ -10,11 +10,12 @@ var frame
 var alive = true
 var deck
 var AI
+var team
+var enemies
 
 var hand = []
 
 var Frame = load("res://Character/character.tscn") 
-var Deck = load("res://Deck/cl_deck.gd") 
 
 signal death
 signal completed
@@ -40,6 +41,18 @@ func _init(n="Character", _hp=1, _mana=1, ai=false):
 func set_sprite():
 	self.frame.set_sprite("res://Icon.png", true, 1)
 	
+func set_deck():
+	var new_card
+	var cards=[]
+	for i in range(20):
+		if i<10:
+			new_card = Attack_card.new("Attack "+str(i), 1, 20)
+		else:
+			new_card = Heal_card.new("Heal "+str(i), 2, 25)
+		new_card.deck = self
+		cards.append(new_card)
+	return cards
+	
 func start_turn(ui=null):
 	self.mana = self.mana_max
 	self.frame.highlight()
@@ -55,6 +68,7 @@ func end_turn():
 func add_hp(value):
 	self.hp = min(self.hp + value, self.hp_max)
 	self.frame.update()
+	return self
 	
 func remove_hp(value):
 	self.hp = self.hp - value
@@ -63,7 +77,9 @@ func remove_hp(value):
 		self.alive=false
 		self.hp = 0
 		emit_signal("death")
+	return self
 
 func get_cards():
 	hand = self.deck.get_hand(5)
 	return hand
+	

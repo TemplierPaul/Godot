@@ -1,54 +1,51 @@
 extends Control
 
-var Character = load("res://Character/cl_character.gd") 
-var Porcupine = load("res://Character/Monsters/cl_porcupine.gd") 
-var Card = load("res://Card/cl_card.gd") 
-var Attack_card = load("res://Card/cl_attack_card.gd") 
-
-var Queue = load("res://Queue/cl_queue.gd") 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-var team = []
-var enemies = []
+var left_team
+var right_team 
 var cards = []
 var selected_card=null
 
 var queue
 var turn_char
 
+var keep_going = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for i in range(3):
-		var ch = Robot.new("Player "+str(i), 100, 4)
-		var new_node = ch.frame
-		get_node("Team").add_child(new_node)
-		new_node.update()
-		new_node.connect('clicked', self, "char_click", [new_node])
-		ch.connect('death', self, "death", [new_node])
-		team.append(ch)
+	left_team = add_team('robots', true)
+	right_team = add_team('porcupines', false)
+	left_team.set_enemy(right_team)
+	right_team.set_enemy(left_team)
 	
-	for i in range(3):
-		var ch = Porcupine.new("Monster "+str(i), 40, 2)
-		var new_node = ch.frame
-		get_node("Enemies").add_child(new_node)
-		new_node.update()
-		new_node.connect('clicked', self, "char_click", [new_node])
-		ch.connect('death', self, "death", [new_node])
-		enemies.append(ch)
-		
 	queue = $Queue
-	queue.init(team, enemies)
+	queue.init(left_team.characters, right_team.characters)
 	print(queue.index)
 	next_turn(true)
-#	turn_char = queue.get_next()
-#	turn_char.start_turn()
-#	add_cards(turn_char.get_cards())
 
-func add_cards(cards):
-	for c in cards:
+func add_team(type='robots', left_side=true, player_side=null):
+	if player_side == null:
+		player_side = left_side
+	var team = load("res://Formation/formation.tscn").instance()
+	team.populate(type)
+	add_child(team)
+	team.set('margin_top', 168)
+	team.set_arrow(left_side)
+	
+	# Position
+	if left_side:
+		team.set('margin_left', 136)
+	else:
+		team.set('margin_left', 1256)
+	
+	# Win condition
+	if player_side:
+		team.connect('all_dead', self, "end_game", ['lose'])
+	else:
+		team.connect('all_dead', self, "end_game", ['win'])
+	return team
+
+func add_cards(_cards):
+	for c in _cards:
 		var new_node = c.frame
 		new_node.update()
 		new_node.connect('clicked', self, "card_click", [new_node])
@@ -65,7 +62,9 @@ func cast_card(card, source, target, show_time=0):
 		
 		if show_time >0:
 			card.frame.emit_signal('focused')
+			target.frame.show_arrow(true)
 			yield(get_tree().create_timer(show_time), "timeout")
+			target.frame.show_arrow(false)
 			card.frame.emit_signal('unfocused')
 		
 		card.effect(source, target)
@@ -75,28 +74,6 @@ func cast_card(card, source, target, show_time=0):
 	selected_card = null
 	print("Casting completed")
 	
-func are_all_dead(list):
-	var alive = 0
-	for c in list:
-		if c.alive:
-			alive = alive + 1
-	return alive == 0
-
-
-func death(char_node):
-	print("DEATH " + str(char_node.character.name))
-	if char_node.character == turn_char:
-		char_node.call_deferred("free")
-		next_turn(false)
-	else:
-		char_node.call_deferred("free")
-	
-	if are_all_dead(team):
-		end_game('lose')
-	if are_all_dead(enemies):
-		end_game('win')
-
-
 func update_lists():
 	cards=[]
 	for c in $Cards.get_children():
@@ -104,6 +81,7 @@ func update_lists():
 	
 
 func end_game(result):
+	keep_going = false
 	var res
 	if result == "win":
 		res = load("res://End/Win.tscn").instance()
@@ -111,14 +89,9 @@ func end_game(result):
 		res = load("res://End/Lose.tscn").instance()
 	add_child(res)
 	$"Close game".raise()
+	queue.end_game()
 
 # Interactions
-
-func char_click(char_frame):
-	#print(char_frame.character.name, ' clicked')
-	if selected_card != null:
-		cast_card(selected_card.card, turn_char, char_frame.character)
-		
 
 func card_click(card_frame):
 		#print(card_frame.card.name, selected_card)
@@ -134,6 +107,8 @@ func _close():
 	get_tree().quit()
 
 func next_turn(prev_freed=false):
+	if left_team.are_all_dead() or right_team.are_all_dead():
+		return 0
 	if !prev_freed:
 		turn_char.end_turn()
 	print("\n> New Turn")
@@ -141,6 +116,7 @@ func next_turn(prev_freed=false):
 		c.free()
 	turn_char = queue.get_next()
 	print(turn_char.name, " AI: ", turn_char.AI)
+	
 	if turn_char.AI ==null:
 		$Cards.visible = true
 		$"End turn".visible = true

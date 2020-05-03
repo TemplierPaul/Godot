@@ -7,6 +7,8 @@ var description
 var frame
 var base_style
 var highlight_style 
+var show_cost=true
+var sprite_carac = ["res://icon.png", false, 1]
  
 var deck
 
@@ -20,9 +22,11 @@ func _init(n='Card', c=0):
 	set_frame()
 	
 func set_frame():
+	print(sprite_carac)
 	custom_style()
 	self.frame = Frame.instance()
 	self.frame.link_card(self)
+	self.frame.set_sprite(sprite_carac[0], sprite_carac[1], sprite_carac[2])
 
 func custom_style():
 	base_style = StyleBoxFlat.new()

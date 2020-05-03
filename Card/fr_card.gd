@@ -43,6 +43,7 @@ func select():
 func unselect():
 #	print(self.card.name, " Unselected")
 	$Background.set("custom_styles/panel", base_style)
+	$"Cost background".set("custom_styles/panel", base_style)
 	self.update()
 
 func mouse_hover():
@@ -52,3 +53,11 @@ func mouse_hover():
 func hover_stop():
 	emit_signal("unfocused")
 
+func set_sprite(path, flip_h, scale):
+	$Image.texture = load(path)
+	$Image.set('flip_h', flip_h)
+	$Image.scale=Vector2(scale, scale)
+	self.card.sprite_carac = [path, flip_h, scale]
+#	print("Editing sprite_carac \n", path, " ", flip_h, " ", scale, " \n", self.card.sprite_carac, "\n")
+	return self
+	
