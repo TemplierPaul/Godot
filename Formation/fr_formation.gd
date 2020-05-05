@@ -19,6 +19,7 @@ func add_char(ch):
 	add_child(new_node)
 	new_node.update()
 	new_node.connect('clicked', self, "char_click", [new_node])
+	new_node.connect('dragged_on', self, "char_drag", [new_node])
 	ch.connect('death', self, "death", [new_node])
 	characters.append(ch)
 
@@ -53,6 +54,10 @@ func set_enemy(enemy_team):
 
 func char_click(char_frame):
 	#print(char_frame.character.name, ' clicked')
+	if ui.selected_card != null and !ui.dragging:
+		ui.cast_card(ui.selected_card.card, ui.turn_char, char_frame.character)
+		
+func char_drag(char_frame):
 	if ui.selected_card != null:
 		ui.cast_card(ui.selected_card.card, ui.turn_char, char_frame.character)
 

@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 var card
 var selected = false
@@ -7,6 +7,7 @@ var base_style
 var highlight_style 
 
 signal clicked
+signal dragged
 signal focused
 signal unfocused
 	
@@ -30,7 +31,7 @@ func update():
 
 
 func _on_click(event):
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and !event.pressed:
 		if event.button_index == 1:
 			self.selected = !self.selected
 			emit_signal("clicked")
@@ -59,5 +60,12 @@ func set_sprite(path, flip_h, scale):
 	$Image.scale=Vector2(scale, scale)
 	self.card.sprite_carac = [path, flip_h, scale]
 #	print("Editing sprite_carac \n", path, " ", flip_h, " ", scale, " \n", self.card.sprite_carac, "\n")
-	return self
+	return self.card
 	
+func get_drag_data(_pos):
+	var dup = self.duplicate()
+	dup.rect_scale=Vector2(0.5, 0.5)
+	dup.rect_pivot_offset= - rect_pivot_offset
+	set_drag_preview(dup)
+	emit_signal("dragged")
+	return self

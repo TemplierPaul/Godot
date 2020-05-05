@@ -5,6 +5,7 @@ signal next_turn
 
 
 var base_style = StyleBoxFlat.new()
+var click_style = StyleBoxFlat.new()
 var highlight_style = StyleBoxFlat.new()
 
 var highlighted = false
@@ -18,10 +19,15 @@ func set_styles():
 	base_style.set_border_width_all(0)
 	base_style.set("border_blend", false)
 	
-	highlight_style.set_bg_color(Color(1, 0, 0, 0))
-	highlight_style.set_border_width_all(5)
+	click_style.set_bg_color(Color(1, 0, 0, 0))
+	click_style.set_border_width_all(5)
+	click_style.set("border_blend", true)
+	click_style.set("border_color", Color(0, 0, 0, 1))
+	
+	highlight_style.set_bg_color(Color("#3cc776"))
+	highlight_style.set_border_width_all(10)
 	highlight_style.set("border_blend", true)
-	highlight_style.set("border_color", Color(0, 0, 0, 1))
+	highlight_style.set("border_color", Color('#00c251'))
 	
 	
 func highlight():
@@ -29,22 +35,19 @@ func highlight():
 	
 func downlight():
 	self.set("custom_styles/panel", base_style)
+	
+func click():
+	self.set("custom_styles/panel", click_style)
 
 func gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		print(event.button_index)
 		if event.button_index == 1:
-			self.highlight()
+			self.click()
 			emit_signal("next_turn")
 			
 			# Wait 
-			var t = Timer.new()
-			t.set_wait_time(0.5)
-			t.set_one_shot(true)
-			self.add_child(t)
-			t.start()
-			yield(t, "timeout")
-			t.queue_free()
+			yield(get_tree().create_timer(0.5), "timeout")
 			
 			self.downlight()
 			

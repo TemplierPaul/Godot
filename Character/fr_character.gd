@@ -1,6 +1,7 @@
 extends Node
 
 signal clicked
+signal dragged_on
 signal updated
 
 # Called when the node enters the scene tree for the first time.
@@ -34,9 +35,11 @@ func set_styles():
 	
 func highlight():
 	$Background.set("custom_styles/panel", highlight_style)
+	$aura.set('visible', true)
 	
 func downlight():
 	$Background.set("custom_styles/panel", base_style)
+	$aura.set('visible', false)
 
 func update():
 	get_node("Bars/HP_bar/HP").text = str(self.character.hp) + '/' + str(self.character.hp_max)
@@ -59,3 +62,10 @@ func _on_click(event):
 			
 func show_arrow(show=true):
 	arrow.set('visible', show)
+
+func can_drop_data(_pos, data):
+	return true
+
+func drop_data(_pos, data):
+	print("CAST CARD ", data.card.name, " ON ", self.character.name)
+	emit_signal("dragged_on")

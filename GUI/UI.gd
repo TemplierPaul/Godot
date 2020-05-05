@@ -9,6 +9,7 @@ var queue
 var turn_char
 
 var keep_going = true
+var dragging = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -49,6 +50,7 @@ func add_cards(_cards):
 		var new_node = c.frame
 		new_node.update()
 		new_node.connect('clicked', self, "card_click", [new_node])
+		new_node.connect('dragged', self, "card_drag", [new_node])
 		new_node.connect('focused', $"Central display", "show_node", [new_node, true])
 		new_node.connect('unfocused', $"Central display", "show_node", [new_node, false])
 		get_node("Cards").add_child(new_node)
@@ -73,12 +75,19 @@ func cast_card(card, source, target, show_time=0):
 		update_lists()
 	selected_card = null
 	print("Casting completed")
+	no_more_actions()
 	
 func update_lists():
 	cards=[]
 	for c in $Cards.get_children():
 		cards.append(c.card)
 	
+func no_more_actions():
+	for c in $Cards.get_children():
+		if c.card.cost <= turn_char.mana:
+			return true
+	$"End turn".highlight()
+	return false
 
 func end_game(result):
 	keep_going = false
@@ -94,15 +103,23 @@ func end_game(result):
 # Interactions
 
 func card_click(card_frame):
-		#print(card_frame.card.name, selected_card)
-		if selected_card != null:
-			selected_card.unselect()
-		if selected_card != card_frame and card_frame.card.cost <= turn_char.mana:
-			selected_card = card_frame
-			selected_card.select()
-		else:
-			selected_card = null
+	if dragging:
+		selected_card = null
+		dragging = false
+	#print(card_frame.card.name, selected_card)
+	if selected_card != null:
+		selected_card.unselect()
+	if selected_card != card_frame and card_frame.card.cost <= turn_char.mana:
+		selected_card = card_frame
+		selected_card.select()
+	else:
+		selected_card = null
 	
+func card_drag(card_frame):
+	selected_card = card_frame
+	card_frame.unselect()
+	dragging=true
+
 func _close():
 	get_tree().quit()
 
@@ -125,6 +142,7 @@ func next_turn(prev_freed=false):
 		$"End turn".visible = false
 		turn_char.AI.connect('next_turn', self, "next_turn")
 	add_cards(turn_char.get_cards())
+	no_more_actions()
 	yield(turn_char.start_turn(self), "completed")
 
-	
+
