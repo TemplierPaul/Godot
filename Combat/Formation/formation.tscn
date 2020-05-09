@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Combat/Formation/fr_formation.gd" type="Script" id=1]
+
+
+[node name="Control" type="VBoxContainer"]
+anchor_right = 0.181
+anchor_bottom = 0.56
+margin_right = 0.5
+rect_min_size = Vector2( 0, 448 )
+alignment = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
