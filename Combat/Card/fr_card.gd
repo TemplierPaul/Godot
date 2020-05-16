@@ -5,6 +5,7 @@ var selected = false
 
 var base_style 
 var highlight_style 
+onready var time_click = OS.get_ticks_msec()
 
 signal clicked
 signal dragged
@@ -31,10 +32,21 @@ func update():
 
 
 func _on_click(event):
+	# Press
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == 1:
+			time_click = OS.get_ticks_msec()
+			self.selected = !self.selected
+			emit_signal("focused")
+	# Release
 	if event is InputEventMouseButton and !event.pressed:
 		if event.button_index == 1:
-			self.selected = !self.selected
-			emit_signal("clicked")
+			if  OS.get_ticks_msec() - time_click < 200: # Short click
+				self.selected = !self.selected
+				emit_signal("clicked")
+				emit_signal("unfocused")
+			else: # Long click
+				emit_signal("unfocused")
 		
 func select():
 #	print(self.card.name, " Selected")

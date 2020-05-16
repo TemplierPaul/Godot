@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Mission/mission_manager.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Roboto/Roboto-Black.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 39
+font_data = ExtResource( 2 )
+
+[node name="main_menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Menu Organizer" type="HBoxContainer" parent="."]
+margin_right = 1500.0
+margin_bottom = 800.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Missions" type="CenterContainer" parent="Menu Organizer"]
+margin_right = 748.0
+margin_bottom = 800.0
+size_flags_horizontal = 3
+
+[node name="Mission manager" parent="Menu Organizer/Missions" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 148.0
+margin_top = 49.0
+margin_right = 598.0
+margin_bottom = 749.0
+
+[node name="Characters" type="CenterContainer" parent="Menu Organizer"]
+margin_left = 752.0
+margin_right = 1500.0
+margin_bottom = 800.0
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Menu Organizer/Characters"]
+margin_left = 173.0
+margin_top = 49.0
+margin_right = 573.0
+margin_bottom = 749.0
+rect_min_size = Vector2( 400, 700 )
+
+[node name="Label" type="Label" parent="Menu Organizer/Characters/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -132.0
+margin_top = -48.5
+margin_right = 132.0
+margin_bottom = 48.5
+custom_fonts/font = SubResource( 1 )
+text = "CHARACTERS 
+(TODO)"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

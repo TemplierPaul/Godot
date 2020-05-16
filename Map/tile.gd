@@ -14,7 +14,7 @@ signal selected
 signal unselected
 
 func _ready():
-	pass
+	$Sprite.texture = color_unselected
 
 func set_coords(i, j):
 	x = i

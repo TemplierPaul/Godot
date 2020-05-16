@@ -1,7 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Combat/Character/fr_character.gd" type="Script" id=1]
-[ext_resource path="res://Roboto/Roboto.tres" type="DynamicFont" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://black.tres" type="StyleBox" id=4]
 [ext_resource path="res://Combat/Character/select_arrow.png" type="Texture" id=5]
@@ -19,7 +18,11 @@ border_color = Color( 1, 1, 1, 1 )
 [sub_resource type="StyleBoxFlat" id=3]
 draw_center = false
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="DynamicFont" id=4]
+size = 13
+font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0, 0.0313726, 0.819608, 1 )
 
 [node name="Character" type="Control"]
@@ -97,9 +100,11 @@ __meta__ = {
 }
 
 [node name="HP" type="Label" parent="Bars/HP_bar"]
-margin_right = 96.0
-margin_bottom = 14.0
-custom_fonts/font = ExtResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.0
+margin_bottom = 2.0
+custom_fonts/font = SubResource( 4 )
 text = "100"
 align = 1
 valign = 1
@@ -113,7 +118,7 @@ margin_right = 96.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 96, 14 )
 mouse_filter = 1
-custom_styles/fg = SubResource( 4 )
+custom_styles/fg = SubResource( 5 )
 custom_styles/bg = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 value = 100.0
@@ -124,9 +129,11 @@ __meta__ = {
 }
 
 [node name="Mana" type="Label" parent="Bars/Mana_bar"]
-margin_right = 96.0
-margin_bottom = 14.0
-custom_fonts/font = ExtResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.0
+margin_bottom = 2.0
+custom_fonts/font = SubResource( 4 )
 text = "100"
 align = 1
 valign = 1

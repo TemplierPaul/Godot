@@ -33,7 +33,7 @@ func _init(n="Character", _hp=1, _mana=1, ai=false):
 	self.hp_max = _hp
 	self.mana = _mana
 	self.mana_max = _mana
-	self.speed = 0 #rng.randi_range(0, 10)
+	self.speed = rng.randi_range(0, 10)
 	self.deck = Deck.new(self)
 	
 	self.frame = Frame.instance()
