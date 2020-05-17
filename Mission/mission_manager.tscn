@@ -15,17 +15,29 @@ __meta__ = {
 }
 
 [node name="Background" type="Panel" parent="."]
-margin_right = 450.0
-margin_bottom = 700.0
-rect_min_size = Vector2( 450, 700 )
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Mission manager" type="Label" parent="Background"]
-margin_top = 9.0
-margin_right = 448.0
-margin_bottom = 40.0
+[node name="VBox" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin_title" type="MarginContainer" parent="VBox"]
+margin_right = 450.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+custom_constants/margin_top = 10
+
+[node name="Title" type="Label" parent="VBox/Margin_title"]
+margin_top = 10.0
+margin_right = 450.0
+margin_bottom = 41.0
 custom_fonts/font = ExtResource( 2 )
 text = "MISSION MANAGER"
 align = 1
@@ -34,16 +46,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Scroll" type="ScrollContainer" parent="."]
-margin_left = 8.0
-margin_top = 54.0
-margin_right = 440.0
-margin_bottom = 694.0
+[node name="MarginContainer" type="MarginContainer" parent="VBox"]
+margin_top = 45.0
+margin_right = 450.0
+margin_bottom = 700.0
+size_flags_vertical = 3
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 15
+custom_constants/margin_bottom = 15
+
+[node name="Scroll" type="ScrollContainer" parent="VBox/MarginContainer"]
+margin_left = 15.0
+margin_top = 5.0
+margin_right = 445.0
+margin_bottom = 640.0
+rect_min_size = Vector2( 420, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Container" type="VBoxContainer" parent="Scroll"]
+[node name="Container" type="VBoxContainer" parent="VBox/MarginContainer/Scroll"]
 __meta__ = {
 "_edit_lock_": true
 }

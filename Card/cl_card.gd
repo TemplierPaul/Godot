@@ -12,7 +12,7 @@ var sprite_carac = ["res://icon.png", false, 1]
  
 var deck
 
-var Frame =  load("res://Combat/Card/card.tscn") 
+var Frame =  load("res://Card/card.tscn") 
 
 func _init(n='Card', c=0):
 	self.name = n

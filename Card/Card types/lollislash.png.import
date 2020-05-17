@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/robot.png-dac24cb5583b70427059c35a6ef972a9.stex"
+path="res://.import/lollislash.png-7f4040e386ada92d560dde738b6e6e72.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Combat/Character/Players/robot.png"
-dest_files=[ "res://.import/robot.png-dac24cb5583b70427059c35a6ef972a9.stex" ]
+source_file="res://Card/Card types/lollislash.png"
+dest_files=[ "res://.import/lollislash.png-7f4040e386ada92d560dde738b6e6e72.stex" ]
 
 [params]
 

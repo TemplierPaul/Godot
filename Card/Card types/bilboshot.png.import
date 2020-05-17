@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/porcupine.png-65161dde961f4622f5a24551e133004b.stex"
+path="res://.import/bilboshot.png-4ea0880fae20b92c0526df1bfb91b812.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Combat/Character/Monsters/porcupine.png"
-dest_files=[ "res://.import/porcupine.png-65161dde961f4622f5a24551e133004b.stex" ]
+source_file="res://Card/Card types/bilboshot.png"
+dest_files=[ "res://.import/bilboshot.png-4ea0880fae20b92c0526df1bfb91b812.stex" ]
 
 [params]
 

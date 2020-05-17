@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lollislash.png-e42df403a34c2b9de7c0e93df2fa83da.stex"
+path="res://.import/porcupine.png-d905ff64b765f3b96fa8ce79c4fbd881.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Combat/Card/Card types/lollislash.png"
-dest_files=[ "res://.import/lollislash.png-e42df403a34c2b9de7c0e93df2fa83da.stex" ]
+source_file="res://Character/Monsters/porcupine.png"
+dest_files=[ "res://.import/porcupine.png-d905ff64b765f3b96fa8ce79c4fbd881.stex" ]
 
 [params]
 

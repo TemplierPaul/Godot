@@ -1,21 +1,82 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Mission/mission_manager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Roboto/Roboto-Black.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://MainMenu/main_menu.gd" type="Script" id=3]
+[ext_resource path="res://gold.png" type="Texture" id=4]
+[ext_resource path="res://Roboto/Roboto.tres" type="DynamicFont" id=5]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.231373, 0.32549, 0.219608, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.713726, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.380392, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 27
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 39
 font_data = ExtResource( 2 )
 
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.294118, 0.345098, 0.298039, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.054902, 0.184314, 0.0156863, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="DynamicFont" id=6]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 45
+font_data = ExtResource( 2 )
+
 [node name="main_menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
+[node name="Background" type="Panel" parent="."]
+margin_right = 1500.0
+margin_bottom = 800.0
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="Background"]
+anchor_left = 1.6276e-07
+anchor_right = 1.6276e-07
+margin_left = 1450.0
+margin_right = 1500.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Menu Organizer" type="HBoxContainer" parent="."]
+margin_top = 100.0
 margin_right = 1500.0
 margin_bottom = 800.0
 alignment = 1
@@ -23,31 +84,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Missions" type="CenterContainer" parent="Menu Organizer"]
-margin_right = 748.0
-margin_bottom = 800.0
-size_flags_horizontal = 3
-
-[node name="Mission manager" parent="Menu Organizer/Missions" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 148.0
-margin_top = 49.0
-margin_right = 598.0
-margin_bottom = 749.0
-
 [node name="Characters" type="CenterContainer" parent="Menu Organizer"]
-margin_left = 752.0
-margin_right = 1500.0
-margin_bottom = 800.0
+margin_right = 748.0
+margin_bottom = 700.0
 size_flags_horizontal = 3
 
 [node name="Panel" type="Panel" parent="Menu Organizer/Characters"]
 margin_left = 173.0
-margin_top = 49.0
+margin_top = 24.0
 margin_right = 573.0
-margin_bottom = 749.0
-rect_min_size = Vector2( 400, 700 )
+margin_bottom = 674.0
+rect_min_size = Vector2( 400, 650 )
+size_flags_vertical = 13
 
 [node name="Label" type="Label" parent="Menu Organizer/Characters/Panel"]
 anchor_left = 0.5
@@ -66,3 +114,150 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Missions" type="CenterContainer" parent="Menu Organizer"]
+margin_left = 752.0
+margin_right = 1500.0
+margin_bottom = 700.0
+size_flags_horizontal = 3
+
+[node name="Mission manager" parent="Menu Organizer/Missions" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 148.0
+margin_top = 24.0
+margin_right = 598.0
+margin_bottom = 674.0
+rect_min_size = Vector2( 450, 650 )
+size_flags_vertical = 13
+
+[node name="Menu GUI" type="HBoxContainer" parent="."]
+margin_right = 1450.0
+margin_bottom = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Account" type="CenterContainer" parent="Menu GUI"]
+margin_right = 359.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Menu GUI/Account"]
+margin_left = 29.0
+margin_top = 12.0
+margin_right = 329.0
+margin_bottom = 87.0
+rect_min_size = Vector2( 300, 75 )
+custom_styles/panel = SubResource( 8 )
+
+[node name="Label" type="Label" parent="Menu GUI/Account/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 6 )
+text = "PlayerName"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level" type="CenterContainer" parent="Menu GUI"]
+margin_left = 363.0
+margin_right = 722.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Menu GUI/Level"]
+margin_left = 29.0
+margin_top = 12.0
+margin_right = 329.0
+margin_bottom = 87.0
+rect_min_size = Vector2( 300, 75 )
+custom_styles/panel = SubResource( 8 )
+
+[node name="Container" type="VBoxContainer" parent="Menu GUI/Level/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level" type="Label" parent="Menu GUI/Level/Panel/Container"]
+margin_top = 4.0
+margin_right = 300.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 0, 30 )
+custom_fonts/font = ExtResource( 5 )
+text = "Level 0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="XP" type="Label" parent="Menu GUI/Level/Panel/Container"]
+margin_top = 39.0
+margin_right = 300.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 30 )
+custom_fonts/font = ExtResource( 5 )
+text = "0 / 100 XP"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gold" type="CenterContainer" parent="Menu GUI"]
+margin_left = 726.0
+margin_right = 1085.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Menu GUI/Gold"]
+margin_left = 29.0
+margin_top = 12.0
+margin_right = 329.0
+margin_bottom = 87.0
+rect_min_size = Vector2( 300, 75 )
+custom_styles/panel = SubResource( 8 )
+
+[node name="Label" type="Label" parent="Menu GUI/Gold/Panel"]
+margin_right = 232.0
+margin_bottom = 75.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.831373, 0.686275, 0.215686, 1 )
+text = "0"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="gold" type="Sprite" parent="Menu GUI/Gold/Panel/Label"]
+position = Vector2( 270, 42 )
+scale = Vector2( 0.0711679, 0.0711679 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CenterContainer2" type="CenterContainer" parent="Menu GUI"]
+margin_left = 1089.0
+margin_right = 1450.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Menu GUI/CenterContainer2"]
+margin_left = 30.0
+margin_top = 12.0
+margin_right = 330.0
+margin_bottom = 87.0
+rect_min_size = Vector2( 300, 75 )
+custom_styles/panel = SubResource( 8 )
+[connection signal="pressed" from="Background/Exit" to="." method="exit"]

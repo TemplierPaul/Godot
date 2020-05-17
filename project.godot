@@ -12,22 +12,22 @@ _global_script_classes=[ {
 "base": "Card",
 "class": "Attack_card",
 "language": "GDScript",
-"path": "res://Combat/Card/Card types/cl_attack_card.gd"
+"path": "res://Card/Card types/cl_attack_card.gd"
 }, {
 "base": "Reference",
 "class": "Card",
 "language": "GDScript",
-"path": "res://Combat/Card/cl_card.gd"
+"path": "res://Card/cl_card.gd"
 }, {
 "base": "Reference",
 "class": "Character",
 "language": "GDScript",
-"path": "res://Combat/Character/cl_character.gd"
+"path": "res://Character/cl_character.gd"
 }, {
 "base": "Reference",
 "class": "Deck",
 "language": "GDScript",
-"path": "res://Combat/Card/cl_deck.gd"
+"path": "res://Card/cl_deck.gd"
 }, {
 "base": "Reference",
 "class": "Effect",
@@ -42,27 +42,27 @@ _global_script_classes=[ {
 "base": "Card",
 "class": "Heal_card",
 "language": "GDScript",
-"path": "res://Combat/Card/Card types/cl_heal_card.gd"
+"path": "res://Card/Card types/cl_heal_card.gd"
 }, {
 "base": "Card",
 "class": "Lifesteal_card",
 "language": "GDScript",
-"path": "res://Combat/Card/Card types/cl_lifesteal_card.gd"
+"path": "res://Card/Card types/cl_lifesteal_card.gd"
 }, {
 "base": "Reference",
 "class": "Monster_AI",
 "language": "GDScript",
-"path": "res://Combat/Character/Monsters/cl_AI.gd"
+"path": "res://Character/Monsters/cl_AI.gd"
 }, {
 "base": "Character",
 "class": "Porcupine",
 "language": "GDScript",
-"path": "res://Combat/Character/Monsters/cl_porcupine.gd"
+"path": "res://Character/Monsters/cl_porcupine.gd"
 }, {
 "base": "Character",
 "class": "Robot",
 "language": "GDScript",
-"path": "res://Combat/Character/Players/cl_robot.gd"
+"path": "res://Character/Players/cl_robot.gd"
 } ]
 _global_script_class_icons={
 "Attack_card": "",

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/select_arrow.png-fb9d532fa3cf7de7687c086afe4bba3a.stex"
+path="res://.import/select_arrow.png-d685d4fbd30b5c04b4baf59d4e3d99ae.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Combat/Character/select_arrow.png"
-dest_files=[ "res://.import/select_arrow.png-fb9d532fa3cf7de7687c086afe4bba3a.stex" ]
+source_file="res://Character/select_arrow.png"
+dest_files=[ "res://.import/select_arrow.png-d685d4fbd30b5c04b4baf59d4e3d99ae.stex" ]
 
 [params]
 

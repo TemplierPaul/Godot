@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grass.png-6daad564ccd71cbb8ea9180ac8c8f4d5.stex"
+path="res://.import/grass.png-384cd04ab401596738ed9d12394ccd30.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Combat/Card/Card types/grass.png"
-dest_files=[ "res://.import/grass.png-6daad564ccd71cbb8ea9180ac8c8f4d5.stex" ]
+source_file="res://Card/Card types/grass.png"
+dest_files=[ "res://.import/grass.png-384cd04ab401596738ed9d12394ccd30.stex" ]
 
 [params]
 

@@ -17,7 +17,7 @@ var rng = RandomNumberGenerator.new()
 
 var hand = []
 
-var Frame = load("res://Combat/Character/character.tscn") 
+var Frame = load("res://Character/character.tscn") 
 
 signal death
 signal completed
